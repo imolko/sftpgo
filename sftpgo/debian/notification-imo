@@ -4,7 +4,7 @@
 /app/imo/imo nifi notification \
     --nifi-host imk-nifi \
     --nifi-port 8888 \
-    --nsq-producer-tcp-address imk-nsqd:4050 \
+    --nsq-producer-tcp-address imk-nsqd:4150 \
     --sftpgo-operation "$1" \
     --sftpgo-username "$2" \
     --sftpgo-path "$3" \
