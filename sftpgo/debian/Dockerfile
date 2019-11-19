@@ -7,6 +7,9 @@ WORKDIR /go/src/github.com/drakkan/sftpgo
 #RUN git checkout `git rev-list --tags --max-count=1`
 RUN go build -i -ldflags "-s -w -X github.com/drakkan/sftpgo/utils.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/utils.date=`date -u +%FT%TZ`" -o sftpgo
 
+# Tomamos de imolko imo.
+FROM imolko/imo:latest as imo
+
 # now define the run environment
 FROM debian:latest
 
@@ -40,6 +43,7 @@ COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/sftpgo bin/sftpgo
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/sftpgo.json .config/sftpgo/
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/templates ${WEB_DIR}/templates
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/static ${WEB_DIR}/static
+COPY --from=imo /imolko/imo/ ${BASE_DIR}/imo/
 RUN chown -R ${UID}:${GID} ${DATA_DIR}
 
 # run as non root user
