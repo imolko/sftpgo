@@ -8,5 +8,5 @@
     --sftpgo-operation "$1" \
     --sftpgo-username "$2" \
     --sftpgo-path "$3" \
-    --sftpgo-target "$4"
+    --sftpgo-target "$4" > /app/imo/notification-imo.log
 
