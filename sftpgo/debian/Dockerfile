@@ -44,6 +44,7 @@ COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/sftpgo.json .config/sftpg
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/templates ${WEB_DIR}/templates
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/static ${WEB_DIR}/static
 COPY --from=imo /imolko/imo/ ${BASE_DIR}/imo/
+COPY notification-imo ${BASE_DIR}/imo/
 RUN chown -R ${UID}:${GID} ${DATA_DIR}
 
 # run as non root user
