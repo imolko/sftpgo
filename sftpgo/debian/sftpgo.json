@@ -1,0 +1,45 @@
+{
+    "sftpd": {
+        "bind_port": 2022,
+        "bind_address": "",
+        "idle_timeout": 15,
+        "max_auth_tries": 0,
+        "umask": "0022",
+        "banner": "",
+        "upload_mode": 0,
+        "actions": {
+            "execute_on": [
+                "upload", "rename"
+            ],
+            "command": "/app/imo/notification-imo",
+            "http_notification_url": ""
+        },
+        "keys": [],
+        "enable_scp": false,
+        "kex_algorithms": [],
+        "ciphers": [],
+        "macs": [],
+        "login_banner_file": ""
+    },
+    "data_provider": {
+        "driver": "mysql",
+        "name": "sftpgo",
+        "host": "imk-mysql",
+        "port": 3306,
+        "username": "sftpgo",
+        "password": "sftpgoA",
+        "sslmode": 0,
+        "connection_string": "",
+        "users_table": "users",
+        "manage_users": 1,
+        "track_quota": 2,
+        "pool_size": 0,
+        "users_base_dir": ""
+    },
+    "httpd": {
+        "bind_port": 8080,
+        "bind_address": "127.0.0.1",
+        "templates_path": "templates",
+        "static_files_path": "static"
+    }
+}

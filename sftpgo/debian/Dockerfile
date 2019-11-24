@@ -43,8 +43,11 @@ COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/sftpgo bin/sftpgo
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/sftpgo.json .config/sftpgo/
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/templates ${WEB_DIR}/templates
 COPY --from=buildenv /go/src/github.com/drakkan/sftpgo/static ${WEB_DIR}/static
+# Instalamos Imo
 COPY --from=imo /imolko/imo/ ${BASE_DIR}/imo/
 COPY notification-imo ${BASE_DIR}/imo/
+# Sobreescribimos la configuracion por defecto mas coherente con zauron.
+COPY sftpgo.json .config/sftpgo/
 RUN chown -R ${UID}:${GID} ${DATA_DIR}
 RUN chown -R ${UID}:${GID} ${BASE_DIR}/imo/
 
